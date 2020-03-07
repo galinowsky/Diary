@@ -1,37 +1,3 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+div.app {
+  background-color: "black";
 }
-
-
-
-
-  table {
-    border-collapse: collapse;
-  }
-  
-  table, th, td {
-    border: 1px solid black;
-  }
-
-  th, td {
-      height:17px;
-      
-  }
-  td input {
-      min-width: 50px;
-
-  }
-
-  div.Diary {
-    margin:15px
-  }
-
-  button.newTraining {
-    margin-bottom:45px
-  }
-
-  div.Training {
-
-    margin:35px;
-  }
