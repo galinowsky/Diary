@@ -1,27 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Training from "./Training";
 import Paper from "./Paper";
+import Grid from "@material-ui/core/Grid";
 import ReactDOM from "react-dom";
 import { lightgrey } from "color-name";
 import Header from "./Header";
-const mainClassName = "App-link";
 import Button from "@material-ui/core/Button";
-import Card from "./Card";
 
+const mainClassName = "App-link";
 const App = () => {
-  const [trainings, setTrainings] = useState([]);
-  const addTraining = () => {
-    setTrainings([
-      ...trainings,
+  const [trainings, setTrainings] = useState([{
+    id: 0,
+    value: <Paper
+      data={[{
+        excecrise: 'bieganie',
+        weight: 75,
+        sets: 0,
+        reps: 'nie wiem co to',
+      }]}
+    />,
+  }]);
+
+  const addTraining = useCallback(() => {
+    setTrainings((currentTrainings) => [
+      ...currentTrainings,
       {
-        id: trainings.length,
-        value: <Paper />
-      }
+        id: currentTrainings.length,
+        value: <Paper
+          data={[{
+            excecrise: 'bieganie',
+            weight: 75,
+            sets: currentTrainings.length,
+            reps: 'nie wiem co to',
+          }]}
+        />,
+      },
     ]);
-  };
+  }, [setTrainings]);
 
   return (
-    <div className="App" style={{ backgroundColor: "#999", width: "300px" }}>
+    <div className="App" style={{ }}>
           
       <header className="App-header">
          <Header />
@@ -33,10 +51,11 @@ const App = () => {
         className="App-body"
         style={{ backgroundColor: "lightGrey", wdith: "200px" }}
       >
-        <Paper />
-        {trainings.map(train => (
-          <div>{train.value}</div>
-        ))}
+        <Grid container>
+          {trainings.map(train => (
+            <Grid xs={4}>{train.value}</Grid>
+          ))}
+        </Grid>
       </body>
     </div>
   );

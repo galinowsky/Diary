@@ -14,13 +14,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimplePaper() {
+export default function SimplePaper(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <Training />
+        <Training {...props} />
       </Paper>
     </div>
   );
