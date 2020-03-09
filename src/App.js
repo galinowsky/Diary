@@ -1,45 +1,55 @@
 import React, { useState, useCallback } from "react";
 import Training from "./Training";
-import Paper from "./Paper";
+//import Paper from "./Paper";
 import Grid from "@material-ui/core/Grid";
-import ReactDOM from "react-dom";
-import { lightgrey } from "color-name";
+
 import Header from "./Header";
 import Button from "@material-ui/core/Button";
+//import { makeStyles } from "@material-ui/core/styles";
 
-const mainClassName = "App-link";
+//const mainClassName = "App-link";
 const App = () => {
-  const [trainings, setTrainings] = useState([{
-    id: 0,
-    value: <Paper
-      data={[{
-        excecrise: 'bieganie',
-        weight: 75,
-        sets: 0,
-        reps: 'nie wiem co to',
-      }]}
-    />,
-  }]);
+  const [trainings, setTrainings] = useState([
+    {
+      id: 0,
+      value: (
+        <Training
+          data={[
+            {
+              excecrise: "exc",
+              weight: 0,
+              sets: 0,
+              reps: 0
+            }
+          ]}
+        />
+      )
+    }
+  ]);
 
   const addTraining = useCallback(() => {
-    setTrainings((currentTrainings) => [
+    setTrainings(currentTrainings => [
       ...currentTrainings,
       {
         id: currentTrainings.length,
-        value: <Paper
-          data={[{
-            excecrise: 'bieganie',
-            weight: 75,
-            sets: currentTrainings.length,
-            reps: 'nie wiem co to',
-          }]}
-        />,
-      },
+        value: (
+          <Training
+            data={[
+              {
+                excecrise: "exc",
+                weight: 0,
+                sets: 0,
+                reps: 0
+              }
+            ]}
+          />
+        )
+      }
     ]);
   }, [setTrainings]);
 
   return (
-    <div className="App" style={{ }}>
+    <div className="App" style={{}}>
           
       <header className="App-header">
          <Header />
@@ -47,10 +57,7 @@ const App = () => {
           Add new Train Session
         </Button>
       </header>
-      <body
-        className="App-body"
-        style={{ backgroundColor: "lightGrey", wdith: "200px" }}
-      >
+      <body className="App-body" style={{ wdith: "200px" }}>
         <Grid container>
           {trainings.map(train => (
             <Grid xs={4}>{train.value}</Grid>

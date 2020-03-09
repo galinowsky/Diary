@@ -1,50 +1,36 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import TrainTable from "./TrainTable";
+import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "./Paper";
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
-import TableBody from "@material-ui/core/TableBody";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
 
-const createData = (excecrise, weight, sets, reps) => (
-  { excecrise, weight, sets, reps }
-)
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(3)
+    }
+  },
+  title: {
+    margin: 10,
+    //  padding: 20
+    fontWeight: 545
+  }
+}));
 
-const headerData = ['Excecrise', 'Weight', 'Sets', 'Reps']
-
-const Training = ({data}) => {
-  const [rows, setRows] = useState(data);
-  const addRow = () => {
-    setRows([...rows, createData()]);
-  };
-
+const Training = props => {
+  const classes = useStyles();
   return (
-    <>
-      <div>{new Date().toISOString().slice(0, 10)}</div>
-      <div>Training Name</div>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {headerData.map((cell) => <TableCell>{cell}</TableCell>)}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow contentEditable>
-              <TableCell>{row.excecrise}</TableCell>
-              <TableCell>{row.weight}</TableCell>
-              <TableCell>{row.sets}</TableCell>
-              <TableCell>{row.reps}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Button variant="outlined" color="primary" onClick={addRow}>
-        Add Excecrise
-      </Button>
-    </>
+    <div className={classes.root}>
+      <Paper>
+        <Typography className={classes.title} id="tableTitle">
+          <div>{new Date().toISOString().slice(0, 10)}</div>
+          <div>Training Name</div>
+        </Typography>
+        <TrainTable {...props} />
+      </Paper>
+    </div>
   );
 };
 export default Training;

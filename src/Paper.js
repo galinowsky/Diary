@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Training from "./Training";
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -14,14 +14,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimplePaper(props) {
+export default function SimplePaper() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Paper elevation={3}>
-        <Training {...props} />
-      </Paper>
+      <Paper elevation={3} variant="outlined" />
     </div>
   );
 }
