@@ -1,29 +1,12 @@
-import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
-//import red from '@material-ui/core/colors/red';
 import Typography from "@material-ui/core/Typography";
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    marginBottom: 20
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  ToolBar: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 2
-  }
-}));
+import useStyles from "./Header.styles";
 
-const Header = () => {
+export default function Header() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -44,6 +27,4 @@ const Header = () => {
       </AppBar>
     </div>
   );
-};
-
-export default Header;
+}

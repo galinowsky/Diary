@@ -7,11 +7,12 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core/styles";
-import Checkbox from "@material-ui/core/Checkbox";
+import Checkbox from "./Checkbox";
+import Delete from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles({
   tableHeader: {
-    color: "lightGrey"
+    color: "#dedede"
   }
 });
 
@@ -23,17 +24,25 @@ const createData = (excecrise, weight, sets, reps) => ({
 });
 
 const headerData = ["Excecrise", "Weight", "Sets", "Reps"];
+//const [buttonKeys, setButtonKeys] = useState(0)
 
 const TrainTable = ({ data }) => {
   const [rows, setRows] = useState(data);
   const addRow = () => {
-    setRows([...rows, createData()]);
+    setRows([...rows, data]);
+  };
+
+  const deleteRow = () => {
+    setRows(() => {
+      rows.pop();
+      return rows;
+    });
   };
   const classes = useStyles();
   return (
     <>
       <Table aria-label="simple table">
-        <TableHead className={classes.tableHeader}>
+        <TableHead className={classes.tableHeader} color="#dedede">
           <TableRow>
             <TableCell>
               <Checkbox />
@@ -47,7 +56,7 @@ const TrainTable = ({ data }) => {
           {rows.map(row => (
             <TableRow contentEditable>
               <TableCell>
-                <Checkbox />
+                <Delete onClick={deleteRow} />
               </TableCell>
               <TableCell>{row.excecrise}</TableCell>
               <TableCell>{row.weight}</TableCell>

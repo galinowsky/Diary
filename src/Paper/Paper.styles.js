@@ -1,6 +1,4 @@
-import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,12 +12,4 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SimplePaper() {
-  const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <Paper elevation={3} variant="outlined" />
-    </div>
-  );
-}
+export default useStyles;
