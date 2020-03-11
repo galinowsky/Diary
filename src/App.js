@@ -16,6 +16,18 @@ const App = () => {
               weight: 0,
               sets: 0,
               reps: 0
+            },
+            {
+              excecrise: "exc",
+              weight: 0,
+              sets: 0,
+              reps: 0
+            },
+            {
+              excecrise: "exc",
+              weight: 0,
+              sets: 0,
+              reps: 0
             }
           ]}
         />

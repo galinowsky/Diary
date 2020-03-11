@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 //import Paper from "./Paper";
 import Table from "@material-ui/core/Table";
@@ -9,7 +10,10 @@ import TableCell from "@material-ui/core/TableCell";
 import { makeStyles } from "@material-ui/core/styles";
 import Checkbox from "./Checkbox";
 import Delete from "@material-ui/icons/Delete";
-
+import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import Divider from "@material-ui/core/Divider";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 const useStyles = makeStyles({
   tableHeader: {
     color: "#dedede"
@@ -32,13 +36,14 @@ const TrainTable = ({ data }) => {
     setRows([...rows, data]);
   };
 
-  const deleteRow = () => {
-    setRows(() => {
-      rows.pop();
-      return rows;
-    });
+  const deleteRow = i => {
+    const temp = rows;
+    temp.splice(i, 1);
+    setRows(temp);
+    console.log(rows);
   };
   const classes = useStyles();
+  console.log(rows.length);
   return (
     <>
       <Table aria-label="simple table">
@@ -52,23 +57,25 @@ const TrainTable = ({ data }) => {
             ))}
           </TableRow>
         </TableHead>
+
         <TableBody>
-          {rows.map(row => (
-            <TableRow contentEditable>
+          {rows.map((row, i) => (
+            <TableRow contentEditable="True" id={i}>
               <TableCell>
-                <Delete onClick={deleteRow} />
+                <Delete onClick={() => deleteRow(i)} />
               </TableCell>
               <TableCell>{row.excecrise}</TableCell>
               <TableCell>{row.weight}</TableCell>
               <TableCell>{row.sets}</TableCell>
               <TableCell>{row.reps}</TableCell>
+              <EditOutlinedIcon />
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Button variant="outlined" color="primary" onClick={addRow}>
+      <AddBoxOutlinedIcon variant="outlined" color="black" onClick={addRow}>
         Add Excecrise
-      </Button>
+      </AddBoxOutlinedIcon>
     </>
   );
 };

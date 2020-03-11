@@ -3,7 +3,8 @@ import Paper from "@material-ui/core/Paper";
 import TrainTable from "./TrainTable";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
+import CancelPresentationOutlinedIcon from "@material-ui/icons/CancelPresentationOutlined";
+import TrainHeader from "./TrainHeader";
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
@@ -24,10 +25,8 @@ const Training = props => {
   return (
     <div className={classes.root}>
       <Paper>
-        <Typography className={classes.title} id="tableTitle">
-          <div>{new Date().toISOString().slice(0, 10)}</div>
-          <div>Training Name</div>
-        </Typography>
+        <TrainHeader />
+
         <TrainTable {...props} />
       </Paper>
     </div>
