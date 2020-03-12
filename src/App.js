@@ -12,22 +12,22 @@ const App = () => {
         <Training
           data={[
             {
-              excecrise: "exc",
-              weight: 0,
-              sets: 0,
-              reps: 0
+              excecrise: "SQT",
+              weight: 100,
+              sets: 3,
+              reps: 3
             },
             {
-              excecrise: "exc",
-              weight: 0,
-              sets: 0,
-              reps: 0
+              excecrise: "Bench",
+              weight: 80,
+              sets: 5,
+              reps: 5
             },
             {
-              excecrise: "exc",
-              weight: 0,
-              sets: 0,
-              reps: 0
+              excecrise: "Pull Up",
+              weight: 20,
+              sets: 4,
+              reps: 8
             }
           ]}
         />

@@ -14,6 +14,7 @@ import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import Divider from "@material-ui/core/Divider";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
+import DoneIcon from "@material-ui/icons/Done";
 const useStyles = makeStyles({
   tableHeader: {
     color: "#dedede"
@@ -37,11 +38,14 @@ const TrainTable = ({ data }) => {
   };
 
   const deleteRow = i => {
-    const temp = rows;
-    temp.splice(i, 1);
-    setRows(temp);
-    console.log(rows);
+    rows.splice(i, 1);
+    setRows([...rows]);
   };
+
+  const editRow = i => {
+    console.log(rows[i]);
+  };
+
   const classes = useStyles();
   console.log(rows.length);
   return (
@@ -68,7 +72,7 @@ const TrainTable = ({ data }) => {
               <TableCell>{row.weight}</TableCell>
               <TableCell>{row.sets}</TableCell>
               <TableCell>{row.reps}</TableCell>
-              <EditOutlinedIcon />
+              <EditOutlinedIcon onClick={() => editRow(i)} />
             </TableRow>
           ))}
         </TableBody>
