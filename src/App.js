@@ -15,19 +15,8 @@ const App = () => {
               excecrise: "SQT",
               weight: 100,
               sets: 3,
-              reps: 3
-            },
-            {
-              excecrise: "Bench",
-              weight: 80,
-              sets: 5,
-              reps: 5
-            },
-            {
-              excecrise: "Pull Up",
-              weight: 20,
-              sets: 4,
-              reps: 8
+              reps: 3,
+              editable: false
             }
           ]}
         />
@@ -47,7 +36,8 @@ const App = () => {
                 excecrise: "exc",
                 weight: 0,
                 sets: 0,
-                reps: 0
+                reps: 0,
+                editable: false
               }
             ]}
           />
