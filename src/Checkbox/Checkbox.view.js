@@ -8,7 +8,7 @@ export default function SimpleCheckbox() {
   // const [checked, setChecked] = useState(false);
 
   const handleChange = () => {
-    console.log("nie wiem");
+  
   };
 
   return <Checkbox className={classes.root} onChange={handleChange} />;

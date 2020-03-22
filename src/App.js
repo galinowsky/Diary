@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
-import Training from "./Training";
-import Grid from "@material-ui/core/Grid";
-import Header from "./Header";
-import Button from "@material-ui/core/Button";
+import React, { useState, useCallback } from 'react';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Training from './Training';
+import Header from './Header';
 
 const App = () => {
   const [trainings, setTrainings] = useState([
@@ -12,20 +12,20 @@ const App = () => {
         <Training
           data={[
             {
-              excecrise: "SQT",
+              excecrise: 'SQT',
               weight: 100,
               sets: 3,
               reps: 3,
-              editable: false
-            }
+              editable: false,
+            },
           ]}
         />
-      )
-    }
+      ),
+    },
   ]);
 
   const addTraining = useCallback(() => {
-    setTrainings(currentTrainings => [
+    setTrainings((currentTrainings) => [
       ...currentTrainings,
       {
         id: currentTrainings.length,
@@ -33,32 +33,31 @@ const App = () => {
           <Training
             data={[
               {
-                excecrise: "exc",
+                excecrise: 'exc',
                 weight: 0,
                 sets: 0,
                 reps: 0,
-                editable: false
-              }
+                editable: false,
+              },
             ]}
           />
-        )
-      }
+        ),
+      },
     ]);
   }, [setTrainings]);
 
   return (
     <div className="App" style={{}}>
-          
       <header className="App-header">
-         <Header />
+        <Header />
         <Button variant="outlined" color="primary" onClick={addTraining}>
-          Add new Train Session
+          Add new Train Session 
         </Button>
       </header>
-      <body className="App-body" style={{ wdith: "200px" }}>
+      <body className="App-body">
         <Grid container>
-          {trainings.map(train => (
-            <Grid xs={4}>{train.value}</Grid>
+          {trainings.map((train) => (
+            <Grid xs={4} key={train.id} item>{train.value}</Grid>
           ))}
         </Grid>
       </body>
