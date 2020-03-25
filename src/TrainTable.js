@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-duplicates
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +11,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import Checkbox from './Checkbox';
 import EditIcon from './EditIcon';
 import DeleteIcon from './DeleteIcon';
+
 
 const useStyles = makeStyles({
   tableHeader: {
@@ -31,12 +31,13 @@ const headerData = ['Excecrise', 'Weight', 'Sets', 'Reps'];
 
 const TrainTable = ({ data }) => {
   // console.log(data);
+
   const [rows, setRows] = useState(data);
   // const [rowEditable, setRowEditability] = useState(false);
 
   const addRow = () => {
     setRows([...rows, { ...createData }]);
-    console.log(rows);
+
   };
 
   const deleteRow = (i) => {
@@ -52,6 +53,7 @@ const TrainTable = ({ data }) => {
   const classes = useStyles();
   return (
     <>
+   
       <Table aria-label="simple table">
         <TableHead className={classes.tableHeader} color="#dedede">
           <TableRow>
@@ -74,20 +76,18 @@ const TrainTable = ({ data }) => {
             >
               <TableCell>
                 <DeleteIcon onClick={() => deleteRow(i)} />
-                <Delete onClick={() => deleteRow(i)} />
               </TableCell>
               <TableCell>{row.excecrise}</TableCell>
               <TableCell>{row.weight}</TableCell>
               <TableCell>{row.sets}</TableCell>
               <TableCell>{row.reps}</TableCell>
+              <TableCell>
+                <EditIcon
+                  onClick={() => EditRow(i)}
+                  editable={row.editable}
+                />
+              </TableCell>
 
-              <EditOutlinedIcon
-                color={row.editable ? 'secondary' : 'primary'}
-                onClick={() => EditRow(i)}
-              />
-              <EditIcon
-                onClick={() => console.log(i)}
-              />
             </TableRow>
           ))}
         </TableBody>

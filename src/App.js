@@ -5,6 +5,12 @@ import Training from './Training';
 import Header from './Header';
 
 const App = () => {
+  const deleteTraining = (i) => {
+    console.log(trainings);
+    trainings.splice(i, 1);
+    setTrainings([...trainings]);
+  };
+
   const [trainings, setTrainings] = useState([
     {
       id: 0,
@@ -19,6 +25,7 @@ const App = () => {
               editable: false,
             },
           ]}
+          onClick={() => deleteTraining(trainings.length - 1)}
         />
       ),
     },
@@ -40,28 +47,33 @@ const App = () => {
                 editable: false,
               },
             ]}
+            onClick={() => deleteTraining(currentTrainings.length)}
           />
         ),
       },
     ]);
-  }, [setTrainings]);
+  }, [deleteTraining]);
+
 
   return (
-    <div className="App" style={{}}>
+    <>
       <header className="App-header">
         <Header />
         <Button variant="outlined" color="primary" onClick={addTraining}>
-          Add new Train Session 
+          Add new Train Session
         </Button>
+
       </header>
       <body className="App-body">
         <Grid container>
+
           {trainings.map((train) => (
+
             <Grid xs={4} key={train.id} item>{train.value}</Grid>
           ))}
         </Grid>
       </body>
-    </div>
+    </>
   );
 };
 export default App;
