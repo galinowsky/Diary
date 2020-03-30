@@ -1,76 +1,96 @@
 import React, { useState, useCallback } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import Training from './Training';
 import Header from './Header';
+import TrainDaysForm from './TrainDaysForm';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(0.5),
+    },
+    marginTop: '20px',
+  },
+}));
 
 const App = () => {
-  const deleteTraining = (i) => {
-    console.log(trainings);
-    trainings.splice(i, 1);
-    setTrainings([...trainings]);
-  };
-
   const [trainings, setTrainings] = useState([
     {
       id: 0,
-      value: (
-        <Training
-          data={[
-            {
-              excecrise: 'SQT',
-              weight: 100,
-              sets: 3,
-              reps: 3,
-              editable: false,
-            },
-          ]}
-          onClick={() => deleteTraining(trainings.length - 1)}
-        />
-      ),
+      data: [{
+        excecrise: 'SQT',
+        weight: 100,
+        sets: 3,
+        reps: 3,
+        editable: false,
+      }],
     },
   ]);
+
+  const [daysPerWeek, setDaysPerWeek] = useState(4);
+  const changeDaysPerWeek = (val) => {
+    setDaysPerWeek(val);
+  };
+
+  const deleteTraining = useCallback((i) => {
+    trainings.splice(i, 1);
+    setTrainings([...trainings]);
+  }, [trainings]);
 
   const addTraining = useCallback(() => {
     setTrainings((currentTrainings) => [
       ...currentTrainings,
       {
         id: currentTrainings.length,
-        value: (
-          <Training
-            data={[
-              {
-                excecrise: 'exc',
-                weight: 0,
-                sets: 0,
-                reps: 0,
-                editable: false,
-              },
-            ]}
-            onClick={() => deleteTraining(currentTrainings.length)}
-          />
-        ),
+        data: [{
+          excecrise: 'exc',
+          weight: 0,
+          sets: 0,
+          reps: 0,
+          editable: false,
+        }],
       },
     ]);
-  }, [deleteTraining]);
-
-
+  }, [setTrainings]);
+  const classes = useStyles();
+  const createColumn = () => (
+    <Grid container direction="column">
+      {trainings.map((train, i) => (
+        <Grid xs={daysPerWeek} key={train.id} item>
+          <Training data={train.data} onClick={() => { deleteTraining(i); }} />
+        </Grid>
+      ))}
+    </Grid>
+  );
   return (
     <>
+
       <header className="App-header">
         <Header />
-        <Button variant="outlined" color="primary" onClick={addTraining}>
-          Add new Train Session
-        </Button>
-
+        <Grid container>
+          <Grid item xs={2}>
+            <Button variant="outlined" color="primary" onClick={addTraining} className={classes.root}>
+              Add new Train Session
+            </Button>
+          </Grid>
+          <Grid item xs={2}>
+            <TrainDaysForm data={daysPerWeek} changeDaysPerWeek={changeDaysPerWeek} />
+          </Grid>
+        </Grid>
       </header>
       <body className="App-body">
-        <Grid container>
+        <Grid container direction="row" spacing={1}>
+          {console.log(Math.ceil(trainings.length / daysPerWeek))}
+          <Grid container direction="column" spacing={0}>
+            {trainings.map((train, i) => (
+              <Grid xs={12 / daysPerWeek} key={train.id} item>
+                <Training data={train.data} onClick={() => { deleteTraining(i); }} />
+              </Grid>
+            ))}
+          </Grid>
 
-          {trainings.map((train) => (
-
-            <Grid xs={4} key={train.id} item>{train.value}</Grid>
-          ))}
         </Grid>
       </body>
     </>

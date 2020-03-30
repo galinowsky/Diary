@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Training = (props) => {
   const classes = useStyles();
-  const onClickFunction = {...props}
+  const onClickFunction = { ...props };
   return (
     <div className={classes.root}>
 
       <Paper>
-        <TrainHeader onClick={onClickFunction.onClick}/>
-       
+        <TrainHeader onClick={onClickFunction.onClick} />
+      
         <TrainTable {...props} />
       </Paper>
     </div>

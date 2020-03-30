@@ -5,13 +5,11 @@ import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from '@material-ui/core/styles';
-import Delete from '@material-ui/icons/Delete';
 import AddBoxOutlinedIcon from '@material-ui/icons/AddBoxOutlined';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import Typography from '@material-ui/core/Typography';
 import Checkbox from './Checkbox';
 import EditIcon from './EditIcon';
 import DeleteIcon from './DeleteIcon';
-
 
 const useStyles = makeStyles({
   tableHeader: {
@@ -37,7 +35,6 @@ const TrainTable = ({ data }) => {
 
   const addRow = () => {
     setRows([...rows, { ...createData }]);
-
   };
 
   const deleteRow = (i) => {
@@ -53,7 +50,7 @@ const TrainTable = ({ data }) => {
   const classes = useStyles();
   return (
     <>
-   
+
       <Table aria-label="simple table">
         <TableHead className={classes.tableHeader} color="#dedede">
           <TableRow>
@@ -61,7 +58,7 @@ const TrainTable = ({ data }) => {
               <Checkbox />
             </TableCell>
             {headerData.map((cell, id) => (
-              <TableCell key={id.toString()}>{cell}</TableCell>
+              <TableCell key={id.toString()}><Typography variant="h6" fontWeight="Bold">{cell}</Typography></TableCell>
             ))}
           </TableRow>
         </TableHead>
