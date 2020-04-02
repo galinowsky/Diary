@@ -55,15 +55,8 @@ const App = () => {
     ]);
   }, [setTrainings]);
   const classes = useStyles();
-  const createColumn = () => (
-    <Grid container direction="column">
-      {trainings.map((train, i) => (
-        <Grid xs={daysPerWeek} key={train.id} item>
-          <Training data={train.data} onClick={() => { deleteTraining(i); }} />
-        </Grid>
-      ))}
-    </Grid>
-  );
+ 
+
   return (
     <>
 
@@ -82,15 +75,11 @@ const App = () => {
       </header>
       <body className="App-body">
         <Grid container direction="row" spacing={1}>
-          {console.log(Math.ceil(trainings.length / daysPerWeek))}
-          <Grid container direction="column" spacing={0}>
-            {trainings.map((train, i) => (
-              <Grid xs={12 / daysPerWeek} key={train.id} item>
-                <Training data={train.data} onClick={() => { deleteTraining(i); }} />
-              </Grid>
-            ))}
-          </Grid>
-
+          {trainings.map((train, i) => (
+            <Grid xs={12/daysPerWeek}  key={train.id} item>
+              <Training data={train.data} onClick={() => { deleteTraining(i); }} />
+            </Grid>
+          ))}
         </Grid>
       </body>
     </>
