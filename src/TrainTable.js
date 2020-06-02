@@ -10,12 +10,17 @@ import Typography from '@material-ui/core/Typography';
 import Checkbox from './Checkbox';
 import EditIcon from './EditIcon';
 import DeleteIcon from './DeleteIcon';
+import { grid } from '@material-ui/system';
 
 const useStyles = makeStyles({
   tableHeader: {
-    color: '#dedede',
+    // color: '#dedede',
   },
+
 });
+
+
+
 const createData = {
   excecrise: 'exc',
   weight: 0,
@@ -52,13 +57,13 @@ const TrainTable = ({ data }) => {
     <>
 
       <Table aria-label="simple table">
-        <TableHead className={classes.tableHeader} color="#dedede">
+        <TableHead className={classes.tableHeader}>
           <TableRow>
             <TableCell>
               <Checkbox />
             </TableCell>
             {headerData.map((cell, id) => (
-              <TableCell key={id.toString()}><Typography variant="h6" fontWeight="Bold">{cell}</Typography></TableCell>
+              <TableCell key={id.toString()}><Typography variant="h8" fontWeight="Bold">{cell}</Typography></TableCell>
             ))}
           </TableRow>
         </TableHead>

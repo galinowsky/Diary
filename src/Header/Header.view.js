@@ -17,11 +17,11 @@ export default function Header() {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
+          > 
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Diary
+            Training Diary
           </Typography>
         </Toolbar>
       </AppBar>

@@ -9,13 +9,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     '& > *': {
-      margin: theme.spacing(3),
+      margin: theme.spacing(5),
     },
   },
   title: {
-    margin: 10,
-    //  padding: 20
+    margin: 15,
+    padding: 20,
     fontWeight: 545,
+    contenEditable: true,
   },
 }));
 

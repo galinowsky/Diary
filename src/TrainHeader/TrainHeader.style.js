@@ -1,24 +1,27 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   HeaderElem: {
     float: 'left',
     marginLeft: 10,
     marginRight: 10,
   },
   title: {
-    flexGrow: 2,
-    // marginLeft: '5%',
     padding: '2%',
     margin: '2%',
     textAlign: 'center',
-    display: 'inline-block',
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '96%',
+    position: 'relative'
   },
   button: {
-    float: 'right',
-    marginLeft: 35,
+    // float: 'right',
+    position: 'absolute',
+    top: '2px',
+    right: '5px',
     marginRight: 1,
   },
-}));
+});
 
 export default useStyles;
